@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 import kr.or.ddit.bts.service.BtsService;
 import kr.or.ddit.bts.service.BtsServiceImpl;
 import kr.or.ddit.commons.exception.PKNotFoundException;
+import kr.or.ddit.utils.CookieUtils;
 import kr.or.ddit.vo.BtsVO;
 
 @WebServlet("/bts")
@@ -71,6 +73,13 @@ public class BtsServlet extends HttpServlet{
 		}
 		
 		if (status == 200) {
+			
+			Cookie btsCookie = new Cookie("btsCookie", id); //1번
+			resp.addCookie(btsCookie); //2번
+			String reservedValue =  new CookieUtils(req).getCookieValue("btsCookie");
+			btsCookie.setPath(req.getContextPath()+"/");
+			btsCookie.setMaxAge(60*60*24*10);
+			resp.addCookie(btsCookie);
 			
 			viewResolve(viewName, req, resp);
 			

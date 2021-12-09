@@ -7,15 +7,15 @@ import kr.or.ddit.bts.dao.BtsDAOImplInMemory;
 import kr.or.ddit.commons.exception.PKNotFoundException;
 import kr.or.ddit.vo.BtsVO;
 
-public class BtsServiceImpl implements BtsService {
+public class BtsServiceImpl2 implements BtsService {
 	
-	private static BtsServiceImpl self;
+	private static BtsServiceImpl2 self;
 	
-	private BtsServiceImpl() {}
+	private BtsServiceImpl2() {}
 	
-	public static BtsServiceImpl getInstance() {
+	public static BtsServiceImpl2 getInstance() {
 		if(self == null)
-		self = new BtsServiceImpl();
+		self = new BtsServiceImpl2();
 		return self;
 	}
 	
@@ -33,6 +33,10 @@ public class BtsServiceImpl implements BtsService {
 		if (bts == null) {
 			throw new PKNotFoundException(id+"에 해당하는 멤버가 없음.");
 		}
+		
+		
+		
+		
 		return bts;
 	}
 

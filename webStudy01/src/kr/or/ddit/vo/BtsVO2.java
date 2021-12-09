@@ -2,13 +2,13 @@ package kr.or.ddit.vo;
 
 import java.io.Serializable;
 
-public class BtsVO implements Serializable{
+public class BtsVO2 implements Serializable{
 
-	public BtsVO() {
+	public BtsVO2() {
 		super();
 	}
 	
-	public BtsVO(String id, String name, String contentPage) {
+	public BtsVO2(String id, String name, String contentPage) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -65,7 +65,7 @@ public class BtsVO implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BtsVO other = (BtsVO) obj;
+		BtsVO2 other = (BtsVO2) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
