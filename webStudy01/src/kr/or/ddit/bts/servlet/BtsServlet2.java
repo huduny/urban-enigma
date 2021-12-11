@@ -17,12 +17,11 @@ import org.apache.commons.lang3.StringUtils;
 import kr.or.ddit.bts.service.BtsService;
 import kr.or.ddit.bts.service.BtsServiceImpl;
 import kr.or.ddit.commons.exception.PKNotFoundException;
-import kr.or.ddit.servlet03.HttpServletRequestDesc;
 import kr.or.ddit.utils.CookieUtils;
 import kr.or.ddit.vo.BtsVO;
 
-@WebServlet("/bts")
-public class BtsServlet extends HttpServletRequestDesc{
+@WebServlet("/bts2")
+public class BtsServlet2 extends HttpServlet{
 	private BtsService service = BtsServiceImpl.getInstance();
 	private BtsVO vo = new BtsVO();
 	
@@ -58,8 +57,6 @@ public class BtsServlet extends HttpServletRequestDesc{
 //			필수파라미터는 정상적으로 넘어옴
 //			3-2. 통과
 //			비지니스 로직 사용(retrieveBtsById) 사용
-			Cookie btsCookie = CookieUtils.getnerateCookie("btsCookie", id);
-			resp.addCookie(btsCookie);
 			try {
 				BtsVO selectedMember = service.retrieveBtsById(id);
 //				/bts/re.jsp
@@ -77,12 +74,12 @@ public class BtsServlet extends HttpServletRequestDesc{
 		
 		if (status == 200) {
 			
-//			Cookie btsCookie = new Cookie("btsCookie", id); //1번
-//			resp.addCookie(btsCookie); //2번
-//			String reservedValue =  new CookieUtils(req).getCookieValue("btsCookie");
-//			btsCookie.setPath(req.getContextPath()+"/");
-//			btsCookie.setMaxAge(60*60*24*10);
-//			resp.addCookie(btsCookie);
+			Cookie btsCookie = new Cookie("btsCookie", id); //1번
+			resp.addCookie(btsCookie); //2번
+			String reservedValue =  new CookieUtils(req).getCookieValue("btsCookie");
+			btsCookie.setPath(req.getContextPath()+"/");
+			btsCookie.setMaxAge(60*60*24*10);
+			resp.addCookie(btsCookie);
 			
 			viewResolve(viewName, req, resp);
 			

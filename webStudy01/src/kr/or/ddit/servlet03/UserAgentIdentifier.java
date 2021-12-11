@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.or.ddit.enumpkg.BrowserType;
-import sun.management.resources.agent;
 
 /**
  * User-Agent 헤더를 통해서 사용자의 브라우저를 식별하고,
