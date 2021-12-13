@@ -1,19 +1,18 @@
 package kr.or.ddit.commons.service;
 
 import kr.or.ddit.commons.dao.MemberDAO;
-import kr.or.ddit.commons.dao.MemberDAOImpl;
 import kr.or.ddit.commons.dao.MemberDAOimplInMemory;
 import kr.or.ddit.enumpkg.ServiceResult;
 import kr.or.ddit.vo.MemberVO;
 
-public class AutehnticateServiceImpl implements AuthenticateService {
-	private MemberDAO memberDAO = MemberDAOImpl.getInstance();
+public class AutehnticateServiceImpl2 implements AuthenticateService {
+	private MemberDAO memberDAO = MemberDAOimplInMemory.getInstance();
 	
-	private static AutehnticateServiceImpl self;
-	private AutehnticateServiceImpl() {}
-	public static AutehnticateServiceImpl getInstance() {
+	private static AutehnticateServiceImpl2 self;
+	private AutehnticateServiceImpl2() {}
+	public static AutehnticateServiceImpl2 getInstance() {
 		if(self == null)
-		self = new AutehnticateServiceImpl();
+		self = new AutehnticateServiceImpl2();
 		return self;
 	}
 	
