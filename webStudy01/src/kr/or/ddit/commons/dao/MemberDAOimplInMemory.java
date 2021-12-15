@@ -3,6 +3,7 @@ package kr.or.ddit.commons.dao;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import kr.or.ddit.member.dao.MemberDAO;
 import kr.or.ddit.vo.MemberVO;
 
 public class MemberDAOimplInMemory implements MemberDAO {

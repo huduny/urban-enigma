@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import kr.or.ddit.db.ConnectionFactory;
+import kr.or.ddit.member.dao.MemberDAO;
 import kr.or.ddit.vo.MemberVO;
 
 public class MemberDAOImpl2 implements MemberDAO {

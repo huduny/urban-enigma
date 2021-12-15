@@ -13,7 +13,7 @@
 
 	if(authMember!=null){
 		%>
-		<%=authMember.getMemName() %>님 로그인상태
+		<a href="<%=request.getContextPath() %>/myPage.do"><%=authMember.getMemName() %>님 로그인상태
 		<a href="<%=request.getContextPath() %>/login/logout.do">로그아웃</a>
 		<% 
 	}else{

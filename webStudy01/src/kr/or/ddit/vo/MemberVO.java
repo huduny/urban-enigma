@@ -2,6 +2,11 @@ package kr.or.ddit.vo;
 
 import java.io.Serializable;
 
+/**
+ * member테이블을 대상으로 한 회원관리용 domain layer
+ * @author PC22
+ *
+ */
 public class MemberVO implements Serializable {
    
    public MemberVO() {

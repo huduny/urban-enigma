@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectMemberList">		
+		SELECT MEM_ID, MEM_NAME, MEM_HP, MEM_ADD1, MEM_MAIL, MEM_MILEAGE, MEM_BIR
+		FROM MEMBER
+	</entry>
+	<entry key="selectMember">                                       
+	       SELECT mem_id, mem_pass, mem_name,                                       
+	       mem_regno1, mem_regno2, to_char(mem_bir, 'yyyy-mm-dd') mem_bir,                            
+	       mem_zip, mem_add1, mem_add2,                                                               
+	       mem_hometel, mem_comtel, mem_hp,                                                           
+	       mem_mail, mem_job, mem_like,                                                               
+	       mem_memorial, to_char(mem_memorialday, 'yyyy-mm-dd') mem_memorialday, mem_mileage,         
+	       mem_delete                                                                       
+	       FROM member                                                                   
+	       WHERE MEM_ID = ?       
+	</entry>
+</properties>
+
+
+

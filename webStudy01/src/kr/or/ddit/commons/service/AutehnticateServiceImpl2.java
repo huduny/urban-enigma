@@ -1,8 +1,8 @@
 package kr.or.ddit.commons.service;
 
-import kr.or.ddit.commons.dao.MemberDAO;
 import kr.or.ddit.commons.dao.MemberDAOimplInMemory;
 import kr.or.ddit.enumpkg.ServiceResult;
+import kr.or.ddit.member.dao.MemberDAO;
 import kr.or.ddit.vo.MemberVO;
 
 public class AutehnticateServiceImpl2 implements AuthenticateService {

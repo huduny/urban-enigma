@@ -25,9 +25,10 @@ session.removeAttribute("message");
 <%		
 session.removeAttribute("errors");
 	}
+
 %>
 
-<form action="${pageContext.request.contextPath}/login/loginProcess.do" method="post">
+<form action="${pageContext.request.contextPath}/myPage2.do" method="post">
 	<ul>
 		<li>
 			<input type="text" name="memId" placeholder="아이디">

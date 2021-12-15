@@ -12,7 +12,7 @@
 <h4> 데이터베이스 정보</h4>
 <table>
 	<thead>
-		<tr>
+		<tr>0
 			<th>PROPERTY_NAME</th>
 			<th>PROPERTY_VALUE</th>
 			<th>DESCRIPTION</th>
