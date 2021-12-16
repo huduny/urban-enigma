@@ -2,19 +2,18 @@ package kr.or.ddit.member.service;
 
 import java.util.List;
 
-import kr.or.ddit.commons.exception.PKNotFoundException;
 import kr.or.ddit.enumpkg.ServiceResult;
 import kr.or.ddit.member.dao.MemberDAOImpl;
 import kr.or.ddit.vo.MemberVO;
 
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl2 implements MemberService {
 	private MemberDAOImpl dao = MemberDAOImpl.getInstance();
 	
-	private static MemberServiceImpl self;
-	private MemberServiceImpl() {}
-	public static MemberServiceImpl getInstance() {
+	private static MemberServiceImpl2 self;
+	private MemberServiceImpl2() {}
+	public static MemberServiceImpl2 getInstance() {
 		if(self == null)
-		self = new MemberServiceImpl();
+		self = new MemberServiceImpl2();
 		return self;
 	}
 
@@ -32,12 +31,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO retrieveMember(String memId) {
-		MemberVO member = dao.selectMember(memId);
-		if (member == null) {
-			throw new PKNotFoundException(memId+"해당 회원이 없음");
-		}
-		
-		return member;
+		// TODO Auto-generated method stub
+		return dao.selectMember(memId);
 	}
 
 	@Override

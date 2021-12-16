@@ -33,106 +33,23 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public MemberVO selectMemberForAuth(String memId) {
-		/*
-		 * 1.데이터베이스 접속
-		 * -드라이버 찾기
-		 * -로딩
-		 * -커넥션
-		 * -쿼리문
-		 * -실행
-		 * -결과값핸들링
-		 * -close
-		 * -값맅리턴
-		 */
-		StringBuffer sql = new StringBuffer();
-		sql.append(" select mem_id, mem_pass, mem_name ");
-		sql.append(" from member ");
-		sql.append(" where mem_id = ? ");
-		try(
-			Connection conn = ConnectionFactory.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
-		){
-			stmt.setString(1, memId);
-			ResultSet rs = stmt.executeQuery();
-			System.out.println(rs);
-			MemberVO vo = null;
-			if (rs.next()) {
-				vo = MemberVO.builder()
-							.memId(rs.getString("mem_id"))
-							.memPass(rs.getString("mem_pass"))
-							.memName(rs.getString("mem_name"))
-							.build();
-			}
-			
-		}catch (SQLException e) {
-			throw new RuntimeException();
-		}
-		
-		
-		return vo;
+		return (MemberVO) mapper.queryForObject("selectMemberForAuth", MemberVO.class, memId);
 	}
 	@Override
 	public int insertMember(MemberVO member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.insert("insertMember", member);
 	}
 	
 
 	
 	@Override
 	public List<MemberVO> selectMemberList() {
-		/*
-		 * SELECT MEM_ID, MEM_NAME, MEM_HP, MEM_ADD1, MEM_MAIL, MEM_MILEAGE, MEM_BIR
-			FROM MEMBER ;
-		 */
-		
-		List<MemberVO> list = new ArrayList<>();
-		
-		try(
-				Connection conn = ConnectionFactory.getConnection();
-				PreparedStatement stmt = mapper.generateQueryStatment(conn, "selectMemberList");
-			){
-				ResultSet rs = stmt.executeQuery();
-				System.out.println(rs);
-				MemberVO vo = null;
-				while (rs.next()) {
-					Object result = mapper.dataMapping(rs, MemberVO.class);
-//					vo = MemberVO.builder()
-//								.memId(rs.getString("mem_id"))
-//								.memName(rs.getString("mem_name"))
-//								.memHp(rs.getString("MEM_HP"))
-//								.memAdd1(rs.getString("MEM_ADD1"))
-//								.memMail(rs.getString("MEM_MAIL"))
-//								.memMileage(rs.getInt("MEM_MILEAGE"))
-//								.memBir(rs.getString("MEM_BIR"))
-//								.build();
-					list.add((MemberVO) result);
-				}
-			
-			return list;
-		}catch (SQLException e) {
-			throw new RuntimeException();
-		}
+		return (List<MemberVO>) mapper.queryForList("selectMemberList", MemberVO.class);
 	}//end selectList
 	
 	@Override
 	public MemberVO selectMember(String memId) {
-	      MemberVO member = null;
-	      try(
-	         Connection conn = ConnectionFactory.getConnection();
-	         PreparedStatement pstmt = mapper.generateQueryStatment(conn, "selectMember");
-	      ){
-	         pstmt.setString(1, memId);
-	         ResultSet rs = pstmt.executeQuery();
-	         if(rs.next()) {
-	            member = (MemberVO) mapper.dataMapping(rs, MemberVO.class);
-	         }
-	         // 2.조회한 데이터에 따라 그 데이터를 바인드하는 result type vo 가 달라짐. --> data mapper
-	      
-	         return member;
-	      } catch (SQLException e) {
-	         throw new RuntimeException(e);
-	      }
+	    return (MemberVO)mapper.queryForObject("selectMember", MemberVO.class, memId);
 
 	
 	}//end

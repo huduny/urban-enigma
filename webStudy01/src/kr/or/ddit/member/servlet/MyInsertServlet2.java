@@ -1,7 +1,7 @@
 package kr.or.ddit.member.servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,25 +9,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.member.service.MemberServiceImpl;
-import kr.or.ddit.vo.MemberVO;
-
-@WebServlet("/myPage.do")
-public class MyPageServlet extends HttpServlet{
-	private MemberServiceImpl service = MemberServiceImpl.getInstance();
-	
+@WebServlet("/myInsert.do")
+public class MyInsertServlet2 extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		MemberVO authMember = (MemberVO) req.getSession().getAttribute("authMember");
+		Enumeration<String> names = req.getParameterNames();
+		System.out.println(names);
 		
-		MemberVO detail = service.retrieveMember(authMember.getMemId());
-		
-		System.out.println(detail);
-		req.setAttribute("member", detail);
-		String viewName = "member/MyPage";
+		String viewName = "member/MyInsert2";
 		viewResolve(viewName, req, resp);
 	}
-
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		String a = req.getParameter("memId");
+		String b = req.getParameter("memPass");
+		String c = req.getParameter("memName");
+		String d = req.getParameter("memHp");
+		String e = req.getParameter("memAdd1");
+		String f = req.getParameter("memMail");
+		String g = req.getParameter("memBir");
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+		System.out.println(e);
+		System.out.println(f);
+		System.out.println(g);
+		
+	}
+	
 	
 	private void viewResolve(String viewName, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (viewName.startsWith("redirect:")) {
@@ -41,4 +52,5 @@ public class MyPageServlet extends HttpServlet{
 		}
 		
 	}
+	
 }

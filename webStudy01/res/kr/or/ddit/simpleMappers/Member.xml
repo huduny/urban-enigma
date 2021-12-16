@@ -14,7 +14,29 @@
 	       mem_memorial, to_char(mem_memorialday, 'yyyy-mm-dd') mem_memorialday, mem_mileage,         
 	       mem_delete                                                                       
 	       FROM member                                                                   
-	       WHERE MEM_ID = ?       
+	       WHERE MEM_ID = #memId#       
+	</entry>
+	<entry key="insertMember">
+		INSERT INTO member (
+   		mem_id, mem_pass, mem_name,
+    	mem_regno1, mem_regno2, mem_bir,
+    	mem_zip, mem_add1, mem_add2,
+    	mem_hometel, mem_comtel, mem_hp,
+    	mem_mail, mem_job, mem_like,
+    	mem_memorial, mem_memorialday, mem_mileage
+		) VALUES (
+   		#memId#, #memPass#, #memName#,
+		#memRegno1#, #memRegno2#, #memBir#,
+		#memZip#, #memAdd1#, #memAdd2#,
+		#memHometel#, #memComtel#, #memHp#,
+		#memMail#, #memJob#, #memLike#,
+		#memMemorial#, #memMemorialday#, 3000
+		)
+	</entry>
+	<entry key="selectMemberForAuth">
+		select mem_id, mem_pass, mem_name 
+		from member 
+		where mem_id = #memId# 
 	</entry>
 </properties>
 
